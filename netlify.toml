@@ -1,2 +1,0 @@
-[build]
-  command = "pnpm install -g pnpm@7.29.1 && pnpm build"
