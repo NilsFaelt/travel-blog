@@ -1,5 +1,4 @@
 {
-  "packageManager": "pnpm@6.3.2",
   "name": "next",
   "version": "0.1.0",
   "private": true,
