@@ -6,7 +6,7 @@ interface Props {
 }
 export const TravelBlogView: FC<Props> = ({ id }) => {
   return (
-    <main className='flex-column  w-full min-h-full justify-center pb-80 '>
+    <main className='flex-column  w-full min-h-full justify-center pb-80  '>
       <DisplayTravelBlog id={id} />
     </main>
   );

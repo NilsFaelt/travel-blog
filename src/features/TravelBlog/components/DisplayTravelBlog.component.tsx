@@ -2,7 +2,6 @@
 import { TravelBlog } from "@/types";
 import { PrimaryText, PrimaryTitle } from "@/ui";
 import * as contentful from "contentful";
-import Image from "next/image";
 import React, { FC, useEffect, useState } from "react";
 
 interface Props {
@@ -88,8 +87,8 @@ interface BlogSectionProps {
 
 export const BlogSection: FC<BlogSectionProps> = ({ url, title, text }) => {
   return (
-    <div className='max-w-3xl mx-auto'>
-      <div className='my-8 flex flex-col items-center justify-center text-center'>
+    <div className='max-w-3xl mx-auto '>
+      <div className='my-8 flex flex-col items-center  justify-center text-center'>
         {url && (
           <img
             width={100}

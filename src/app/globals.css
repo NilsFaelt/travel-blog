@@ -5,7 +5,8 @@
 
 
 body {
-  background: white
+  background: white;
+  
 }
 .bg-gradient-custom {
   background-image: linear-gradient(to bottom, #efe407, black);

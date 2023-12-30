@@ -4,6 +4,10 @@ import Link from "next/link";
 import React, { useRef, useState } from "react";
 
 export const Header = () => {
+  const links = [
+    { name: "home", link: "/" },
+    { name: "blogs", link: "/travel-blog" },
+  ];
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -78,13 +82,20 @@ export const Header = () => {
             </svg>
           </button>
         </div>
-        <ul className=' text-black flex flex-col items-center justify-center h-full'>
-          <li className='py-4'>
-            <Link href='/'>Home</Link>
-          </li>
-          <li className='py-4'>
-            <Link href='/about'>About</Link>
-          </li>
+        <ul className='w-full text-black flex flex-col items-center justify-center h-full'>
+          {links.map((link, i) => {
+            return (
+              <li key={i} className='py-4 w-full'>
+                <Link
+                  className='block hover:bg-black hover:text-white text-center '
+                  href={link.link}
+                  style={{ width: "100%" }}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </aside>
     </header>
