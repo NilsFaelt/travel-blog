@@ -1,8 +1,10 @@
 "use client";
+import { Rating } from "@/components";
 import { TravelBlog } from "@/types";
 import { PrimaryText, PrimaryTitle } from "@/ui";
+import { formatDate } from "@/utils";
 import * as contentful from "contentful";
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 interface Props {
   id: string;
@@ -10,10 +12,12 @@ interface Props {
 
 interface ContentfulEntry {
   fields: Partial<TravelBlog>;
+  sys: any;
 }
 
 export const DisplayTravelBlog: FC<Props> = ({ id }) => {
   const [blogInfo, setBlogInfo] = useState<TravelBlog | null>(null);
+  const [createdAt, setCreatedAt] = useState<string | null>(null);
   const client = contentful.createClient({
     space: "0hnjt1ih3og0",
     accessToken: "9tOwQGLJAlBJ-eGOp9klrWLpNEkzEj8CgcyZHsegWDE",
@@ -23,7 +27,9 @@ export const DisplayTravelBlog: FC<Props> = ({ id }) => {
     async function fetchEntry() {
       try {
         const entry: ContentfulEntry = await client.getEntry(id);
+
         setBlogInfo(entry?.fields as TravelBlog);
+        setCreatedAt(entry?.sys?.createdAt);
       } catch (error) {
         console.error("Error fetching entry:", error);
       }
@@ -33,8 +39,8 @@ export const DisplayTravelBlog: FC<Props> = ({ id }) => {
       fetchEntry();
     }
   }, [id]);
-
-  if (!id || !blogInfo) return null;
+  const readableDate = formatDate(createdAt);
+  if (!id || !blogInfo) return <PrimaryTitle text='Could Not Find Blog' />;
 
   const {
     title,
@@ -43,6 +49,8 @@ export const DisplayTravelBlog: FC<Props> = ({ id }) => {
     blogTextOne,
     blogTextTwo,
     blogTextThree,
+    rating,
+    ratingBeginnerLevel,
   } = blogInfo;
   const blogData = [
     {
@@ -63,8 +71,9 @@ export const DisplayTravelBlog: FC<Props> = ({ id }) => {
   ];
 
   return (
-    <div>
+    <div className=' pb-10'>
       <PrimaryTitle text={title} />
+      <Rating rating={rating} difficultyRating={ratingBeginnerLevel} />
       {blogData.map((blog, i) => {
         return (
           <BlogSection
@@ -75,6 +84,7 @@ export const DisplayTravelBlog: FC<Props> = ({ id }) => {
           />
         );
       })}
+      <PrimaryText text={`CREATED: ${readableDate}`} />
     </div>
   );
 };

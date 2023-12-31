@@ -1,4 +1,5 @@
 export interface TravelBlog {
+  id: string;
   blogTextOne: string;
   blogTextTwo: string;
   blogTextThree: string;

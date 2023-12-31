@@ -19,11 +19,11 @@ export const Header = () => {
 
   return (
     <header className='flex justify-between items-center w-full h-20 box-border px-5 border-b-2'>
-      <div className='rounded-md bg-black p-2'>
+      <div className='rounded-md bg-primary  p-2  shadow-md'>
         <Link href={"/"}>
           <h1 className='text-xl text-white'>
-            G<span className='text-primaryYellow'>O</span>G
-            <span className='text-primaryYellow'>O</span>-TRAVEL
+            G<span className='text-secondary'>O</span>G
+            <span className='text-secondary'>O</span>-TRAVEL
           </h1>
         </Link>
       </div>

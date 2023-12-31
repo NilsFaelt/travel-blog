@@ -26,7 +26,6 @@ export const PreviewBlog: FC<Props> = ({ id }) => {
     async function fetchEntry() {
       try {
         const entry: ContentfulEntry = await client.getEntries();
-        console.log(entry.items[0]);
         setBlogInfo(entry.items[0]?.fields as TravelBlog);
         setBlogId(entry.items[0].sys.id);
       } catch (error) {
@@ -57,7 +56,7 @@ export const PreviewBlog: FC<Props> = ({ id }) => {
         <h2 className=' absolute text-xl bottom-0  bg-black shadow-md bg-opacity-50 rounded-md  p-10 text-white  '>
           {title}
         </h2>
-        <p className='min-w-52 text-center  absolute top-20 text-black  bg-primaryYellow p-5 rounded-md shadow-md'>
+        <p className='min-w-52 text-center  absolute top-20 text-black  bg-secondary bg-opacity-50s  p-5 rounded-md shadow-md'>
           {underTitles?.[0]}
         </p>
       </div>
