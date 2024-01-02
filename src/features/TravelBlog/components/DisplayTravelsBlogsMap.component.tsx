@@ -1,41 +1,18 @@
 "use client";
-import * as contentful from "contentful";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { DisplayTravelBlogsPreviewSmall } from ".";
-import { TravelBlog } from "@/types";
+import { useBlogs } from "@/hooks";
+import { PrimaryTitle, Spinner } from "@/ui";
 
 interface Props {
   limit?: number;
 }
-interface ContentfulEntry {
-  items: { fields: Partial<TravelBlog>; sys: { id: string } }[];
-}
 
 export const DisplayTravelsBlogsMap: FC<Props> = ({ limit = 1000 }) => {
-  const [blogs, setBlogs] = useState<{ fields: TravelBlog }[] | null>(null);
-  const client = contentful.createClient({
-    space: "0hnjt1ih3og0",
-    accessToken: "9tOwQGLJAlBJ-eGOp9klrWLpNEkzEj8CgcyZHsegWDE",
-  });
-
-  useEffect(() => {
-    async function fetchEntry() {
-      try {
-        const entries: ContentfulEntry = await client.getEntries({
-          limit: limit,
-        });
-        if (entries) {
-          setBlogs(entries.items as { fields: TravelBlog }[]);
-        }
-      } catch (error) {
-        console.error("Error fetching entry:", error);
-      }
-    }
-
-    fetchEntry();
-  }, []);
-  console.log(blogs, "state");
-  if (!blogs) return null;
+  const { blogs, isLoading, isError } = useBlogs();
+  if (isLoading) return <Spinner />;
+  else if (!blogs && !isLoading)
+    return <PrimaryTitle text='COULD NOT FIND ANY BLOGS' />;
 
   return (
     <div className='w-full flex flex-row flex-wrap gap-10 content-center justify-center '>

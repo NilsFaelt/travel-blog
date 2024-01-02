@@ -1,46 +1,21 @@
 "use client";
 import { Rating } from "@/components";
+import { useBlog } from "@/hooks";
 import { TravelBlog } from "@/types";
-import { PrimaryText, PrimaryTitle } from "@/ui";
+import { PrimaryText, PrimaryTitle, Spinner } from "@/ui";
 import { formatDate } from "@/utils";
-import * as contentful from "contentful";
-import { FC, useEffect, useState } from "react";
+
+import { FC } from "react";
 
 interface Props {
   id: string;
 }
 
-interface ContentfulEntry {
-  fields: Partial<TravelBlog>;
-  sys: any;
-}
-
 export const DisplayTravelBlog: FC<Props> = ({ id }) => {
-  const [blogInfo, setBlogInfo] = useState<TravelBlog | null>(null);
-  const [createdAt, setCreatedAt] = useState<string | null>(null);
-  const client = contentful.createClient({
-    space: "0hnjt1ih3og0",
-    accessToken: "9tOwQGLJAlBJ-eGOp9klrWLpNEkzEj8CgcyZHsegWDE",
-  });
-
-  useEffect(() => {
-    async function fetchEntry() {
-      try {
-        const entry: ContentfulEntry = await client.getEntry(id);
-
-        setBlogInfo(entry?.fields as TravelBlog);
-        setCreatedAt(entry?.sys?.createdAt);
-      } catch (error) {
-        console.error("Error fetching entry:", error);
-      }
-    }
-
-    if (id) {
-      fetchEntry();
-    }
-  }, [id]);
+  const { blog, isError, isLoading, createdAt } = useBlog(id);
   const readableDate = formatDate(createdAt);
-  if (!id || !blogInfo) return <PrimaryTitle text='Could Not Find Blog' />;
+  if (isLoading) return <Spinner />;
+  if (!id || !blog) return <PrimaryTitle text='Could Not Find Blog' />;
 
   const {
     title,
@@ -51,7 +26,7 @@ export const DisplayTravelBlog: FC<Props> = ({ id }) => {
     blogTextThree,
     rating,
     ratingBeginnerLevel,
-  } = blogInfo;
+  } = blog;
   const blogData = [
     {
       url: images[0]?.fields?.file?.url,
