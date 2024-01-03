@@ -8,10 +8,11 @@ interface Props {
 }
 
 export const Pagination: FC<Props> = ({ setPage, page, pages }) => {
+  const ceiledPages = Math.ceil(pages);
   const displayFirstPage = page > 0 ? "opacity-1" : "opacity-0";
-  const displayLastPage = page + 1 !== pages ? "opacity-1" : "opacity-0";
+  const displayLastPage = page + 1 !== ceiledPages ? "opacity-1" : "opacity-0";
   const handleClickRight = () => {
-    if (page < pages - 1 && pages > 1) {
+    if (page < ceiledPages - 1 && ceiledPages > 1) {
       setPage((prev) => prev + 1);
     }
   };
@@ -40,10 +41,10 @@ export const Pagination: FC<Props> = ({ setPage, page, pages }) => {
 
       <p className=' underline'>{page + 1}</p>
       <p
-        onClick={() => setPage(pages - 1)}
+        onClick={() => setPage(ceiledPages - 1)}
         className={`${displayLastPage} cursor-pointer`}
       >
-        ...{pages}
+        ...{ceiledPages}
       </p>
 
       <Image

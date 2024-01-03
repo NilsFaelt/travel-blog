@@ -1,4 +1,4 @@
-import { PreviewBlog } from "@/components";
+import { InfoTextAndImage, PreviewBlog } from "@/components";
 import { DisplayCityInfoView } from "@/features";
 import { PrimaryText, PrimaryTitle } from "@/ui";
 import { FC } from "react";
@@ -14,6 +14,7 @@ export const HomeView: FC = () => {
       />
       <PreviewBlog id='66cw7mgWvEu8yIKV4zM18q' />
       <DisplayCityInfoView />
+      <InfoTextAndImage />
     </main>
   );
 };

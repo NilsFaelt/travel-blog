@@ -4,3 +4,4 @@ export * from "./PreviewBlog";
 export * from "./Footer";
 export * from "./Rating";
 export * from "./Pagination";
+export * from "./InfoTextAndImage";

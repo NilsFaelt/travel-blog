@@ -14,8 +14,8 @@ export const PrimaryText: FC<Props> = ({
   width = "w-5/%",
 }) => {
   return (
-    <div className='flex justify-center items-center w-full'>
-      <div className={`bg-white box-border w-4/5 md:${width}`}>
+    <div className='flex justify-center items-center w-full bg-transparent'>
+      <div className={`bg-transparent box-border w-4/5 md:${width}`}>
         <p className={`${color} ${textSize} text-center font-sans`}>{text}</p>
       </div>
     </div>

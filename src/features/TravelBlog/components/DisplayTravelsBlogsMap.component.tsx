@@ -37,11 +37,7 @@ export const DisplayTravelsBlogsMap: FC<Props> = ({
         })}
       </div>
       {pagination && (
-        <Pagination
-          setPage={setPage}
-          page={page}
-          pages={Math.round(total / limit)}
-        />
+        <Pagination setPage={setPage} page={page} pages={total / limit} />
       )}
     </>
   );

@@ -7,6 +7,7 @@ export const Header = () => {
   const links = [
     { name: "home", link: "/" },
     { name: "blogs", link: "/travel-blog" },
+    { name: "about", link: "/about" },
   ];
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
