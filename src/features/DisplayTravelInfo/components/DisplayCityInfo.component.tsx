@@ -65,7 +65,7 @@ export const DisplayCityInfo: FC = () => {
           {filteredCountries.map((country, i) => {
             return (
               <p
-                className=' text-center cursor-pointer hover:bg-primaryYellow'
+                className=' text-center cursor-pointer hover:bg-black hover:text-white'
                 onClick={() => setChoosenCountry(country)}
                 key={i}
               >

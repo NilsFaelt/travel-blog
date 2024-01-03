@@ -8,7 +8,7 @@ export const TravelBlogView: FC<Props> = ({ id }) => {
   return (
     <main className='flex-column  w-full min-h-full justify-center pb-80  '>
       <DisplayTravelBlog id={id} />
-      <DisplayTravelsBlogsMap limit={6} />
+      <DisplayTravelsBlogsMap limit={6} pagination={false} />
     </main>
   );
 };
