@@ -20,7 +20,7 @@ export const InfoTextAndImage: FC = () => {
         }
         alt=''
       /> */}
-      <div className=' p-5 bg-white rounded-md w-3/4'>
+      <div className=' p-5 bg-white rounded-md md:w-3/4'>
         <PrimaryText text="In the pursuit of continued exploration and adventure, adopting a mindful approach to travel becomes paramount. Embracing sustainable travel practices aligns with a green ethos, promoting conscious decisions. Opting for eco-friendly travel modes like trains or EVs minimizes the carbon footprint, allowing one to immerse in the journey's charm while lessening environmental impact. Thoughtful dining choices, supporting local, organic produce, nourish both body and ecosystem. Balancing wanderlust with sustainability entails mindful choices—limiting flights, perhaps one every couple of years, while embracing alternative modes of transport. This conscious travel philosophy intertwines exploration with environmental stewardship, preserving the planet's beauty for future voyages" />
       </div>
     </div>
