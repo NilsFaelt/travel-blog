@@ -1,11 +1,11 @@
 import { InfoTextAndImage, PreviewBlog } from "@/components";
-import { DisplayCityInfoView } from "@/features";
+import { DisplayCityInfoView, HorizontalPreviewView } from "@/features";
 import { PrimaryText, PrimaryTitle } from "@/ui";
 import { FC } from "react";
 
 export const HomeView: FC = () => {
   return (
-    <main className='flex-column  w-full min-h-full justify-center pb-80 '>
+    <main className=' flex flex-col  w-full min-h-full justify-center pb-8 content-center items-center '>
       <PrimaryTitle text='Explore The World' />
       <PrimaryText
         width='w-2/5'
@@ -14,6 +14,7 @@ export const HomeView: FC = () => {
       />
       <PreviewBlog id='66cw7mgWvEu8yIKV4zM18q' />
       <DisplayCityInfoView />
+      <HorizontalPreviewView />
       <InfoTextAndImage />
     </main>
   );

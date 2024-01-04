@@ -1,17 +1,16 @@
 "use client";
 import { FC, useState } from "react";
-import { DisplayTravelBlogsPreviewSmall } from ".";
 import { useBlogs } from "@/hooks";
 import { PrimaryTitle, Spinner } from "@/ui";
-import { Pagination } from "@/components";
+import { DisplayTravelBlogsPreviewSmall } from "@/features/TravelBlog/components";
 
 interface Props {
   limit?: number;
   pagination?: boolean;
 }
 
-export const DisplayTravelsBlogsMap: FC<Props> = ({
-  limit = 3,
+export const HorizontalPreview: FC<Props> = ({
+  limit = 10,
   pagination = true,
 }) => {
   const [page, setPage] = useState(0);
@@ -24,7 +23,7 @@ export const DisplayTravelsBlogsMap: FC<Props> = ({
   return (
     <>
       <div
-        className={` flex flex-row flex-wrap gap-10 content-center justify-center `}
+        className={` p-10 w-full md:w-3/4 m-10 overflow-auto m-10 flex flex-row items-center  gap-10 content-center justify-center   `}
       >
         {blogs?.map((blog, i) => {
           const { title, id, images } = blog.fields;
@@ -38,9 +37,6 @@ export const DisplayTravelsBlogsMap: FC<Props> = ({
           );
         })}
       </div>
-      {pagination && (
-        <Pagination setPage={setPage} page={page} pages={total / limit} />
-      )}
     </>
   );
 };

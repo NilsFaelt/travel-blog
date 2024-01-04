@@ -13,10 +13,12 @@ export const DisplayTravelBlogsPreviewSmall: FC<Props> = ({
 }) => {
   return (
     <Link href={`/travel-blog/${id}`}>
-      <div>
-        <h3 className=''>{title}</h3>
+      <div className=' relative'>
+        <h3 className=' bg-secondary w-3/4 rounded-md text-center absolute -top-5 left-5 p-3'>
+          {title}
+        </h3>
         <img
-          className=' rounded-md w-80  md:w-72 h-44  '
+          className=' rounded-md w-80  md:w-72 h-44 min-w-72  '
           src={imageUrl}
           alt={title}
         />
