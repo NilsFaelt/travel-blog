@@ -45,9 +45,9 @@ export const PreviewBlog: FC<Props> = ({ id }) => {
   return (
     <Link href={`travel-blog/${blogId}`}>
       <div className='flex relative justify-center  rounded-md box-border p-10 my-0 w-full shadow-md  md:max-w-screen-md mx-auto bg-white overflow-hidden cursor-pointer mt-20 pb-20'>
-        <img
+        <Image
           className='rounded-md shadow-md md:h-[70vh] h-[500px] w-full object-cover'
-          src={imageUrl}
+          src={"https:" + imageUrl}
           alt={title}
           width={600}
           height={500}

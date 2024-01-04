@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React, { FC } from "react";
 interface Props {
@@ -17,10 +18,12 @@ export const DisplayTravelBlogsPreviewSmall: FC<Props> = ({
         <h3 className='  bg-secondary w-3/4 rounded-md text-center absolute -top-5 left-5 p-3'>
           {title}
         </h3>
-        <img
+        <Image
           className=' rounded-md w-80  md:w-72 h-44 min-w-72  '
-          src={imageUrl}
+          src={"https:" + imageUrl}
           alt={title}
+          width={100}
+          height={100}
         />
       </div>
     </Link>

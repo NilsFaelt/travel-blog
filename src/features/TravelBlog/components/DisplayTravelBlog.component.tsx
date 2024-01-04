@@ -4,6 +4,7 @@ import { useBlog } from "@/hooks";
 import { TravelBlog } from "@/types";
 import { PrimaryText, PrimaryTitle, Spinner } from "@/ui";
 import { formatDate } from "@/utils";
+import Image from "next/image";
 
 import { FC } from "react";
 
@@ -75,10 +76,10 @@ export const BlogSection: FC<BlogSectionProps> = ({ url, title, text }) => {
     <div className='max-w-3xl mx-auto '>
       <div className='my-8 flex flex-col items-center  justify-center text-center'>
         {url && (
-          <img
+          <Image
             width={100}
             height={1000}
-            src={url}
+            src={"https:" + url}
             alt={`Image 1`}
             className='h-auto w-2/3 object-cover rounded-lg m-5'
           />
