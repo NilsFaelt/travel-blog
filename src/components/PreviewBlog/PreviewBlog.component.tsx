@@ -48,7 +48,7 @@ export const PreviewBlog: FC<Props> = ({ id }) => {
         <img
           className='rounded-md shadow-md md:h-[70vh] h-[500px] w-full object-cover'
           src={imageUrl}
-          alt='Preview'
+          alt={title}
           width={600}
           height={500}
         />

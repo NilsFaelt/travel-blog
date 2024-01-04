@@ -31,6 +31,7 @@ export const Header = () => {
 
       <div className=' '>
         <button
+          aria-label='open menu'
           ref={ref}
           onClick={toggleMenu}
           className={`${
@@ -61,6 +62,7 @@ export const Header = () => {
       >
         <div className=' '>
           <button
+            aria-label='open menu'
             ref={ref}
             onClick={toggleMenu}
             className={` fixed right-5 top-5 ${
