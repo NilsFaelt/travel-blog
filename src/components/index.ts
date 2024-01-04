@@ -5,3 +5,4 @@ export * from "./Footer";
 export * from "./Rating";
 export * from "./Pagination";
 export * from "./InfoTextAndImage";
+export * from "./Card";

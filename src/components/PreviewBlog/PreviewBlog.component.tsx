@@ -44,7 +44,7 @@ export const PreviewBlog: FC<Props> = ({ id }) => {
   const imageUrl = images[0].fields.file.url;
   return (
     <Link href={`travel-blog/${blogId}`}>
-      <div className='flex relative justify-center  rounded-md box-border p-10 my-0 w-full md:max-w-screen-md mx-auto bg-white overflow-hidden cursor-pointer'>
+      <div className='flex relative justify-center  rounded-md box-border p-10 my-0 w-full shadow-md  md:max-w-screen-md mx-auto bg-white overflow-hidden cursor-pointer mt-20 pb-20'>
         <img
           className='rounded-md shadow-md md:h-[70vh] h-[500px] w-full object-cover'
           src={imageUrl}
@@ -53,7 +53,7 @@ export const PreviewBlog: FC<Props> = ({ id }) => {
           height={500}
         />
 
-        <h2 className=' absolute text-xl bottom-0  bg-black shadow-md bg-opacity-50 rounded-md  p-10 text-white  '>
+        <h2 className=' absolute text-xl bottom-7  bg-black shadow-md bg-opacity-50 rounded-md  p-10 text-white  '>
           {title}
         </h2>
         <p className='min-w-52 text-center  absolute top-20 text-black  bg-secondary bg-opacity-50s  p-5 rounded-md shadow-md'>

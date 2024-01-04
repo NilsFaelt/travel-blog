@@ -1,4 +1,5 @@
 import { Footer, Header } from "@/components";
+import { Card } from "@/components/Card/Card.component";
 import React, { FC } from "react";
 
 interface Props {
@@ -9,8 +10,8 @@ export const MainLayout: FC<Props> = ({ children }) => {
   return (
     <div className='w-full '>
       <Header />
-
       {children}
+      <Card />
       <Footer />
     </div>
   );
