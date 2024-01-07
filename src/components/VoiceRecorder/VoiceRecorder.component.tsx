@@ -20,6 +20,14 @@ async function startMicrophone() {
     console.error("Error accessing microphone:", error);
   }
 }
+
+function scrollToBottom() {
+  window.scrollTo({
+    top: document.documentElement.scrollHeight,
+    behavior: "smooth",
+  });
+}
+
 export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
   // startMicrophone();
   const [voiceInput, setVoiceInput] = useState("");
@@ -32,7 +40,17 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
   const wordToDisplay = voiceInput.length > 1 ? transcript : "HOOVER";
+
+  const restartMicrophone = () => {
+    SpeechRecognition.stopListening();
+    resetTranscript();
+    setTimeout(() => {
+      SpeechRecognition.startListening();
+    }, 100);
+  };
+
   useEffect(() => {
+    restartMicrophone();
     setVoiceInput(transcript);
     if (transcript.toLowerCase() === "about") {
       router.push("/about");
@@ -50,7 +68,19 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
       transcript.toLowerCase() === "menu" ||
       transcript.toLowerCase() === "mini"
     ) {
-      setIsOpen(!isOpen);
+      setIsOpen(true);
+    }
+    if (
+      transcript.toLowerCase() === "close" ||
+      transcript.toLowerCase() === "cloose"
+    ) {
+      setIsOpen(false);
+    }
+    if (
+      transcript.toLowerCase() === "contact" ||
+      transcript.toLowerCase() === "mini"
+    ) {
+      scrollToBottom();
     }
   }, [transcript]);
 
