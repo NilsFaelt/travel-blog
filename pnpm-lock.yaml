@@ -6,29 +6,35 @@ specifiers:
   '@types/node': ^20
   '@types/react': ^18
   '@types/react-dom': ^18
+  '@types/react-speech-recognition': ^3.9.5
   autoprefixer: ^10.0.1
   contentful: ^10.6.14
+  core-js: '3'
   eslint: ^8
   eslint-config-next: 14.0.4
   next: 14.0.4
   postcss: ^8
   react: ^18
   react-dom: ^18
+  react-speech-recognition: ^3.10.0
   tailwindcss: ^3.3.0
   typescript: ^5
 
 dependencies:
   '@tanstack/react-query': 5.14.2_react@18.2.0
   contentful: 10.6.14
+  core-js: 3.35.0
   next: 14.0.4_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-speech-recognition: 3.10.0_react@18.2.0
 
 devDependencies:
   '@tanstack/eslint-plugin-query': 5.12.1_xdgzedli73k7lw4xlyzszm74om
   '@types/node': 20.10.5
   '@types/react': 18.2.45
   '@types/react-dom': 18.2.18
+  '@types/react-speech-recognition': 3.9.5
   autoprefixer: 10.4.16_postcss@8.4.32
   eslint: 8.56.0
   eslint-config-next: 14.0.4_xdgzedli73k7lw4xlyzszm74om
@@ -313,6 +319,10 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@types/dom-speech-recognition/0.0.4:
+    resolution: {integrity: sha512-zf2GwV/G6TdaLwpLDcGTIkHnXf8JEf/viMux+khqKQKDa8/8BAUtXXZS563GnvJ4Fg0PBLGAaFf2GekEVSZ6GQ==}
+    dev: true
+
   /@types/json-schema/7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: true
@@ -335,6 +345,12 @@ packages:
     resolution: {integrity: sha512-TJxDm6OfAX2KJWJdMEVTwWke5Sc/E/RlnPGvGfS0W7+6ocy2xhDVQVh/KvC2Uf7kACs+gDytdusDSdWfWkaNzw==}
     dependencies:
       '@types/react': 18.2.45
+    dev: true
+
+  /@types/react-speech-recognition/3.9.5:
+    resolution: {integrity: sha512-m3Sg3Xtj/YcEUu+nLPGwI6oq1wcSblsuyAmXgBfW6Nprfmtl+A+kH4ruPzzFKnFkq6WmmRxdsLvt0nLRAAJtBw==}
+    dependencies:
+      '@types/dom-speech-recognition': 0.0.4
     dev: true
 
   /@types/react/18.2.45:
@@ -837,6 +853,11 @@ packages:
       type-fest: 4.8.3
     transitivePeerDependencies:
       - debug
+    dev: false
+
+  /core-js/3.35.0:
+    resolution: {integrity: sha512-ntakECeqg81KqMueeGJ79Q5ZgQNR+6eaE8sxGCx62zMbAIj65q+uYvatToew3m6eAGdU4gNZwpZ34NMe4GYswg==}
+    requiresBuild: true
     dev: false
 
   /cross-spawn/7.0.3:
@@ -2407,6 +2428,14 @@ packages:
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: true
+
+  /react-speech-recognition/3.10.0_react@18.2.0:
+    resolution: {integrity: sha512-EVSr4Ik8l9urwdPiK2r0+ADrLyDDrjB0qBRdUWO+w2MfwEBrj6NuRmy1GD3x7BU/V6/hab0pl8Lupen0zwlJyw==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}

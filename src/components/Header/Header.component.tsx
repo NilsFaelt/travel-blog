@@ -2,6 +2,7 @@
 import { useCloseOnClickOutsideElement } from "@/hooks";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
+import { VoiceRecorder } from "..";
 
 export const Header = () => {
   const links = [
@@ -19,7 +20,7 @@ export const Header = () => {
   useCloseOnClickOutsideElement(ref, setIsOpen);
 
   return (
-    <header className='flex justify-between items-center w-full h-20 box-border px-5 border-b-2'>
+    <header className='flex  bg-white z-10 justify-between items-center w-full h-20 box-border px-5 border-b-2 '>
       <div className='rounded-md bg-black  p-2  shadow-md'>
         <Link href={"/"}>
           <h1 className='text-xl text-white'>
@@ -28,7 +29,7 @@ export const Header = () => {
           </h1>
         </Link>
       </div>
-
+      <VoiceRecorder isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className=' '>
         <button
           aria-label='open menu'

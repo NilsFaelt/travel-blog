@@ -5,7 +5,7 @@ import { FC } from "react";
 
 export const HomeView: FC = () => {
   return (
-    <main className=' flex flex-col  w-full min-h-full justify-center pb-8 content-center items-center '>
+    <main className=' flex flex-col  w-full min-h-full justify-center pb-8 content-center items-center  '>
       <PrimaryTitle text='Explore The World' />
       <PrimaryText
         width='w-2/5'

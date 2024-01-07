@@ -6,3 +6,4 @@ export * from "./Rating";
 export * from "./Pagination";
 export * from "./InfoTextAndImage";
 export * from "./Card";
+export * from "./VoiceRecorder";
