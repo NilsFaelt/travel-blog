@@ -7,18 +7,11 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { useRouter } from "next/navigation";
+import { DisplayInfoPopUp } from "./components";
 
 interface Props {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-async function startMicrophone() {
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    console.log("Microphone access granted");
-  } catch (error) {
-    console.error("Error accessing microphone:", error);
-  }
 }
 
 function scrollToBottom() {
@@ -29,7 +22,6 @@ function scrollToBottom() {
 }
 
 export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
-  // startMicrophone();
   const [voiceInput, setVoiceInput] = useState("");
   const [hoovering, setIsHoovering] = useState(false);
   const router = useRouter();
@@ -48,7 +40,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
       SpeechRecognition.startListening();
     }, 100);
   };
-
+  console.log(transcript);
   useEffect(() => {
     restartMicrophone();
     setVoiceInput(transcript);
@@ -60,6 +52,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     }
     if (
       transcript.toLowerCase() === "blogs" ||
+      transcript.toLowerCase() === "glocks" ||
       transcript.toLowerCase() === "blog"
     ) {
       router.push("/travel-blog");
@@ -76,35 +69,37 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     ) {
       setIsOpen(false);
     }
-    if (
-      transcript.toLowerCase() === "contact" ||
-      transcript.toLowerCase() === "mini"
-    ) {
+    if (transcript.toLowerCase() === "contact") {
       scrollToBottom();
     }
   }, [transcript]);
 
   return (
-    <div
-      className='flex flex-row gap-1 items-end z-20 '
-      onMouseOver={() => {
-        setIsHoovering(true);
-        SpeechRecognition.startListening();
-      }}
-      onMouseLeave={() => {
-        setIsHoovering(false);
-        SpeechRecognition.stopListening();
-      }}
-    >
-      <div className=' flex border w-28 h-10 shadow-md  rounded-lg cursor-pointer '>
-        {hoovering ? (
-          <PrimaryText text='SPEAK' />
-        ) : (
-          <PrimaryText text={wordToDisplay} />
-        )}
+    <div className='flex flex-row gap-3 items-end z-20 items-center  '>
+      {hoovering && <DisplayInfoPopUp />}
+
+      <div
+        className='flex flex-row gap-1 items-end z-20 '
+        onMouseOver={() => {
+          setIsHoovering(true);
+          SpeechRecognition.startListening();
+        }}
+        onMouseLeave={() => {
+          setIsHoovering(false);
+          SpeechRecognition.stopListening();
+        }}
+      >
+        <div className=' bg-white flex border w-28 h-10 shadow-md  rounded-lg cursor-pointer '>
+          {hoovering ? (
+            <PrimaryText text='SPEAK' />
+          ) : (
+            <PrimaryText text={wordToDisplay} />
+          )}
+          <p></p>
+        </div>
+        <div className='bg-primary border w-5 h-5 shadow-md   rounded-full  ' />
+        <div className='bg-secondary border w-3 h-3 shadow-md   rounded-full ' />
       </div>
-      <div className='border w-5 h-5 shadow-md   rounded-full  ' />
-      <div className='border w-3 h-3 shadow-md   rounded-full ' />
     </div>
   );
 };
