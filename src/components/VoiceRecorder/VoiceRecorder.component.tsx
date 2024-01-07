@@ -31,7 +31,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
-  const wordToDisplay = voiceInput.length > 1 ? transcript : "HOOVER";
+  const wordToDisplay = voiceInput.length > 1 ? transcript : "HOVER";
 
   const restartMicrophone = () => {
     SpeechRecognition.stopListening();
