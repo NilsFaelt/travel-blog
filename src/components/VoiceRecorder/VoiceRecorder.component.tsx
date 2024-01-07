@@ -12,8 +12,16 @@ interface Props {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
+async function startMicrophone() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    console.log("Microphone access granted");
+  } catch (error) {
+    console.error("Error accessing microphone:", error);
+  }
+}
 export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
+  // startMicrophone();
   const [voiceInput, setVoiceInput] = useState("");
   const [hoovering, setIsHoovering] = useState(false);
   const router = useRouter();
@@ -23,7 +31,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
-
+  const wordToDisplay = voiceInput.length > 1 ? transcript : "HOOVER";
   useEffect(() => {
     setVoiceInput(transcript);
     if (transcript.toLowerCase() === "about") {
@@ -45,6 +53,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
       setIsOpen(!isOpen);
     }
   }, [transcript]);
+
   return (
     <div
       className='flex flex-row gap-1 items-end z-20 '
@@ -61,7 +70,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
         {hoovering ? (
           <PrimaryText text='SPEAK' />
         ) : (
-          <PrimaryText text={voiceInput} />
+          <PrimaryText text={wordToDisplay} />
         )}
       </div>
       <div className='border w-5 h-5 shadow-md   rounded-full  ' />

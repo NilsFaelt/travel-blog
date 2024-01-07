@@ -20,7 +20,7 @@ export const Header = () => {
   useCloseOnClickOutsideElement(ref, setIsOpen);
 
   return (
-    <header className='flex  bg-white z-10 justify-between items-center w-full h-20 box-border px-5 border-b-2 '>
+    <header className='flex fixed top-0  bg-white z-10 justify-between items-center w-full h-20 box-border px-5 border-b-2 '>
       <div className='rounded-md bg-black  p-2  shadow-md'>
         <Link href={"/"}>
           <h1 className='text-xl text-white'>

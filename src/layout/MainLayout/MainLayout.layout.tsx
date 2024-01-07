@@ -8,7 +8,7 @@ interface Props {
 
 export const MainLayout: FC<Props> = ({ children }) => {
   return (
-    <div className='w-full  '>
+    <div className='w-full mt-20 '>
       <Header />
       {children}
       <Card />
