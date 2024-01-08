@@ -1,7 +1,7 @@
 "use client";
 import { useCloseOnClickOutsideElement } from "@/hooks";
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { VoiceRecorder } from "..";
 
 export const Header = () => {
@@ -12,12 +12,18 @@ export const Header = () => {
   ];
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [displayVoiceMenu, setDisplayVoiceMenu] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   useCloseOnClickOutsideElement(ref, setIsOpen);
+  useEffect(() => {
+    if (navigator.userAgent.includes("Chrome")) {
+      setDisplayVoiceMenu(true);
+    }
+  }, []);
 
   return (
     <header className='flex fixed top-0  bg-white z-10 justify-between items-center w-full h-20 box-border px-5 border-b-2 '>
@@ -29,7 +35,9 @@ export const Header = () => {
           </h1>
         </Link>
       </div>
-      <VoiceRecorder isOpen={isOpen} setIsOpen={setIsOpen} />
+      {displayVoiceMenu && (
+        <VoiceRecorder isOpen={isOpen} setIsOpen={setIsOpen} />
+      )}
       <div className=' '>
         <button
           aria-label='open menu'

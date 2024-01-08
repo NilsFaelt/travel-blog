@@ -77,7 +77,7 @@ export const BlogSection: FC<BlogSectionProps> = ({ url, title, text }) => {
       <div className='my-8 flex flex-col items-center  justify-center text-center'>
         {url && (
           <Image
-            width={100}
+            width={500}
             height={1000}
             src={"https:" + url}
             alt={`Image 1`}

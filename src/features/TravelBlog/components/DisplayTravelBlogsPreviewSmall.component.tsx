@@ -22,7 +22,7 @@ export const DisplayTravelBlogsPreviewSmall: FC<Props> = ({
           className=' rounded-md w-80  md:w-72 h-44 min-w-72  '
           src={"https:" + imageUrl}
           alt={title}
-          width={100}
+          width={500}
           height={100}
         />
       </div>

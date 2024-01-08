@@ -25,6 +25,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
   const [voiceInput, setVoiceInput] = useState("");
   const [hoovering, setIsHoovering] = useState(false);
   const router = useRouter();
+
   const {
     transcript,
     listening,
@@ -32,7 +33,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
   const wordToDisplay = voiceInput.length > 1 ? transcript : "HOVER";
-
+  console.log(listening);
   const restartMicrophone = () => {
     SpeechRecognition.stopListening();
     resetTranscript();
@@ -40,7 +41,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
       SpeechRecognition.startListening();
     }, 100);
   };
-  console.log(transcript);
+
   useEffect(() => {
     restartMicrophone();
     setVoiceInput(transcript);
@@ -75,7 +76,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
   }, [transcript]);
 
   return (
-    <div className='flex flex-row gap-3 items-end z-20 items-center  '>
+    <div className='flex hidden sm:block flex-row gap-3 items-end z-20 items-center  '>
       {hoovering && <DisplayInfoPopUp />}
 
       <div
@@ -89,7 +90,11 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
           SpeechRecognition.stopListening();
         }}
       >
-        <div className=' bg-white flex border w-28 h-10 shadow-md  rounded-lg cursor-pointer '>
+        <div
+          className={`${
+            listening && hoovering ? " bg-green-300" : " bg-red-300"
+          } flex border w-28 h-10 shadow-md  rounded-lg cursor-pointer`}
+        >
           {hoovering ? (
             <PrimaryText text='SPEAK' />
           ) : (
@@ -103,6 +108,3 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     </div>
   );
 };
-//   if (!browserSupportsSpeechRecognition) {
-//     return <PrimaryText text='Browser doesnt support speech recognition.' />;
-//   }

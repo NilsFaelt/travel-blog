@@ -24,7 +24,7 @@ export const ImageAndTextPreviewCard: FC<Props> = ({
           className='rounded-md shadow-md md:h-[70vh] h-[500px] w-full object-cover'
           src={imageUrl}
           alt='Preview'
-          width={600}
+          width={1000}
           height={500}
         />
 
