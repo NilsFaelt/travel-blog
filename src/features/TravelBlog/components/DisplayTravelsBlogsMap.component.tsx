@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const DisplayTravelsBlogsMap: FC<Props> = ({
-  limit = 3,
+  limit = 4,
   pagination = true,
 }) => {
   const [page, setPage] = useState(0);

@@ -33,7 +33,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
   const wordToDisplay = voiceInput.length > 1 ? transcript : "HOVER";
-  console.log(listening);
+
   const restartMicrophone = () => {
     SpeechRecognition.stopListening();
     resetTranscript();
@@ -43,8 +43,8 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
   };
 
   useEffect(() => {
-    restartMicrophone();
     setVoiceInput(transcript);
+    restartMicrophone();
     if (transcript.toLowerCase() === "about") {
       router.push("/about");
     }
@@ -74,7 +74,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
       scrollToBottom();
     }
   }, [transcript]);
-
+  console.log(voiceInput);
   return (
     <div className='flex hidden sm:block flex-row gap-3 items-end z-20 items-center  '>
       {hoovering && <DisplayInfoPopUp />}
@@ -100,7 +100,6 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
           ) : (
             <PrimaryText text={wordToDisplay} />
           )}
-          <p></p>
         </div>
         <div className='bg-primary border w-5 h-5 shadow-md   rounded-full  ' />
         <div className='bg-secondary border w-3 h-3 shadow-md   rounded-full ' />

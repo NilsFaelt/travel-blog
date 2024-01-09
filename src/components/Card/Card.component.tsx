@@ -13,7 +13,12 @@ export const Card = () => {
           <p>Ive Been Traveling and learning new cultures all my life.</p>
           <div className='border w-3/4 rounded-md p-5 mt-5 -ml-5 bg-secondary '>
             <p>Get In Touch!</p>
-            <p>Mail: Nils.faelt@gmail.com</p>
+            <a
+              className=' underline'
+              href='mailto:Nils.faelt@gmail.com?subject=Subject%20Here&body=Message%20Body%20Here'
+            >
+              Mail: Nils.faelt@gmail.com
+            </a>
           </div>
         </div>
         {/* <img
