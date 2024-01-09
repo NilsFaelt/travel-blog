@@ -73,8 +73,30 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     if (transcript.toLowerCase() === "contact") {
       scrollToBottom();
     }
+    //Blogs--Start
+    if (transcript.toLowerCase() === "india") {
+      router.push("/travel-blog/63hqC1VfvXGYFy0RQIL4W5");
+    }
+    if (transcript.toLowerCase() === "best") {
+      router.push("/travel-blog/3yOffYhZvDDSX0Ah8BvqMF");
+    }
+    if (transcript.toLowerCase() === "tiny") {
+      router.push("/travel-blog/7vak8cW1bd6H89ZqXsJEmN");
+    }
+    if (transcript.toLowerCase() === "waste") {
+      router.push("/travel-blog/2x4AcAJVo2E9WzIBzYley2");
+    }
+    if (transcript.toLowerCase() === "warm") {
+      router.push("/travel-blog/74xx5idIcjQ7dvsoCcrfo9");
+    }
+    if (transcript.toLowerCase() === "china") {
+      router.push("/travel-blog/2TMxLfIkwEQU7pJRBPY4p6");
+    }
+    if (transcript.toLowerCase() === "belt") {
+      router.push("/travel-blog/66cw7mgWvEu8yIKV4zM18q");
+    }
+    //Blogs--End
   }, [transcript]);
-  console.log(voiceInput);
   return (
     <div className='flex hidden sm:block flex-row gap-3 items-end z-20 items-center  '>
       {hoovering && <DisplayInfoPopUp />}
@@ -92,8 +114,8 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
       >
         <div
           className={`${
-            listening && hoovering ? " bg-green-300" : " bg-red-300"
-          } flex border w-28 h-10 shadow-md  rounded-lg cursor-pointer`}
+            listening && hoovering ? " bg-green-300" : " bg-pink-200"
+          } flex border w-28 h-10 shadow-md  rounded-lg cursor-pointer border border-primary`}
         >
           {hoovering ? (
             <PrimaryText text='SPEAK' />

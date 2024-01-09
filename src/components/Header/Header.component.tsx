@@ -2,7 +2,7 @@
 import { useCloseOnClickOutsideElement } from "@/hooks";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { VoiceRecorder } from "..";
+import { DisplayVoiceKeyWord, VoiceRecorder } from "..";
 
 export const Header = () => {
   const links = [
@@ -27,7 +27,7 @@ export const Header = () => {
 
   return (
     <header className='flex fixed top-0  bg-white z-10 justify-between items-center w-full h-20 box-border px-5 border-b-2 '>
-      <div className='rounded-md border border-primary   p-2  shadow-md'>
+      <div className='rounded-md border border-primary   p-1 pl-2 pr-2  shadow-md'>
         <Link href={"/"}>
           <h1 className='text-xl text-black'>
             G<span className='text-secondary'>O</span>G
@@ -109,6 +109,7 @@ export const Header = () => {
             );
           })}
         </ul>
+        <DisplayVoiceKeyWord text='CLOSE' />
       </aside>
     </header>
   );

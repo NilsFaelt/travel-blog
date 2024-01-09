@@ -14,4 +14,5 @@ export interface TravelBlog {
   ratingBeginnerLevel: number;
   title: string;
   underTitles: string[];
+  voiceNavKeyword: string;
 }

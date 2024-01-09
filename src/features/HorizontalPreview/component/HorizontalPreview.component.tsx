@@ -26,9 +26,10 @@ export const HorizontalPreview: FC<Props> = ({
         className={` p-10 w-full md:w-3/4 m-10 overflow-auto m-10 flex flex-row  shadow-md rounded-md items-center  gap-10    `}
       >
         {blogs?.map((blog, i) => {
-          const { title, id, images } = blog.fields;
+          const { title, id, images, voiceNavKeyword } = blog.fields;
           return (
             <DisplayTravelBlogsPreviewSmall
+              voiceNavKeyword={voiceNavKeyword}
               key={i}
               id={id}
               title={title}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { FC, useEffect, useState } from "react";
 import * as contentful from "contentful";
 import { TravelBlog } from "@/types";
+import { DisplayVoiceKeyWord } from "..";
 
 interface Props {
   id: string;
@@ -40,7 +41,7 @@ export const PreviewBlog: FC<Props> = ({ id }) => {
 
   if (!id || !blogInfo) return null;
 
-  const { title, images, underTitles, blogTextOne } = blogInfo;
+  const { title, images, underTitles, blogTextOne, voiceNavKeyword } = blogInfo;
   const imageUrl = images[0].fields.file.url;
   return (
     <Link href={`travel-blog/${blogId}`}>
@@ -59,6 +60,7 @@ export const PreviewBlog: FC<Props> = ({ id }) => {
         <p className='min-w-52 text-center  absolute top-20 text-black  bg-secondary bg-opacity-50s  p-5 rounded-md shadow-md'>
           {underTitles?.[0]}
         </p>
+        <DisplayVoiceKeyWord text={voiceNavKeyword} />
       </div>
     </Link>
   );

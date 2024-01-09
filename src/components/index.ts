@@ -7,3 +7,4 @@ export * from "./Pagination";
 export * from "./InfoTextAndImage";
 export * from "./Card";
 export * from "./VoiceRecorder";
+export * from "./DisplayVoiceKeyWord";

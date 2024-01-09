@@ -1,3 +1,4 @@
+import { DisplayVoiceKeyWord } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import React, { FC } from "react";
@@ -5,12 +6,14 @@ interface Props {
   imageUrl: string;
   id: string;
   title: string;
+  voiceNavKeyword: string;
 }
 
 export const DisplayTravelBlogsPreviewSmall: FC<Props> = ({
   imageUrl,
   id,
   title,
+  voiceNavKeyword,
 }) => {
   return (
     <Link href={`/travel-blog/${id}`}>
@@ -25,6 +28,7 @@ export const DisplayTravelBlogsPreviewSmall: FC<Props> = ({
           width={500}
           height={100}
         />
+        <DisplayVoiceKeyWord text={voiceNavKeyword} />
       </div>
     </Link>
   );

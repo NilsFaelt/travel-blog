@@ -27,13 +27,14 @@ export const DisplayTravelsBlogsMap: FC<Props> = ({
         className={` flex flex-row flex-wrap gap-10 content-center justify-center `}
       >
         {blogs?.map((blog, i) => {
-          const { title, id, images } = blog.fields;
+          const { title, id, images, voiceNavKeyword } = blog.fields;
           return (
             <DisplayTravelBlogsPreviewSmall
               key={i}
               id={id}
               title={title}
               imageUrl={images[0].fields.file.url}
+              voiceNavKeyword={voiceNavKeyword}
             />
           );
         })}
