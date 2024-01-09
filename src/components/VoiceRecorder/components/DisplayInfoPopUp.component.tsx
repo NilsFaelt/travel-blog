@@ -3,7 +3,15 @@ import React, { FC } from "react";
 export const DisplayInfoPopUp: FC = () => {
   return (
     <div className='flex items-center flex-col gap-2 p-4  rounded-md shadow-lg absolute top-60 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border  text-black bg-gray-200 '>
-      <h5 className='text-xl'>Speak to navigate page </h5>
+      <h5 className='text-xl'>
+        Speak to navigate page
+        <p>
+          SHORTCUT HOLD KEY{" "}
+          <span className='text-black  bg-pink-200  rounded-md text-center  bottom-2 right-2 p-0 pl-2 pr-2 border border-primary'>
+            X
+          </span>
+        </p>
+      </h5>
       <div className=' flex flex-row flex-nowrap gap-5 '>
         <div className='flex flex-col rounded-md  p-5 gap-1    '>
           <p className='whitespace-nowrap'> Spooken Comands:</p>

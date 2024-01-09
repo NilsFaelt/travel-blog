@@ -1,13 +1,13 @@
 "use client";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import { useRouter } from "next/navigation";
+import { DisplayInfoPopUp } from "./components";
 import { PrimaryText } from "@/ui";
 import React, { FC, useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { useRouter } from "next/navigation";
-import { DisplayInfoPopUp } from "./components";
 
 interface Props {
   isOpen: boolean;
@@ -97,6 +97,38 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     }
     //Blogs--End
   }, [transcript]);
+
+  const startListening = () => {
+    SpeechRecognition.startListening();
+  };
+
+  const stopListening = () => {
+    SpeechRecognition.stopListening();
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.code === "KeyX") {
+        setIsHoovering(true);
+        startListening();
+      }
+    };
+
+    const handleKeyUp = (event: KeyboardEvent) => {
+      if (event.code === "KeyX") {
+        stopListening();
+        setIsHoovering(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
+    };
+  }, []);
   return (
     <div className='flex hidden sm:block flex-row gap-3 items-end z-20 items-center  '>
       {hoovering && <DisplayInfoPopUp />}
