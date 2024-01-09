@@ -25,7 +25,7 @@ export const DisplayTravelBlogsPreviewSmall: FC<Props> = ({
           className=' rounded-md w-80  md:w-72 h-44 min-w-72  '
           src={"https:" + imageUrl}
           alt={title}
-          width={500}
+          width={200}
           height={100}
         />
         <DisplayVoiceKeyWord text={voiceNavKeyword} />

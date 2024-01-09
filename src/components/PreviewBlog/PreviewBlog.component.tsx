@@ -50,8 +50,8 @@ export const PreviewBlog: FC<Props> = ({ id }) => {
           className='rounded-md shadow-md md:h-[70vh] h-[500px] w-full object-cover'
           src={"https:" + imageUrl}
           alt={title}
-          width={1000}
-          height={1000}
+          width={400}
+          height={300}
         />
 
         <h2 className=' absolute text-xl bottom-7  bg-black shadow-md bg-opacity-50 rounded-md  p-10 text-white  '>
