@@ -1,7 +1,6 @@
 "use client";
 import { Rating } from "@/components";
 import { useBlog } from "@/hooks";
-import { TravelBlog } from "@/types";
 import { PrimaryText, PrimaryTitle, Spinner } from "@/ui";
 import { formatDate } from "@/utils";
 import Image from "next/image";
