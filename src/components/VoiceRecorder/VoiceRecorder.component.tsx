@@ -8,6 +8,7 @@ import React, { FC, useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { voiceMenuData } from "./voice_menu_data";
 
 interface Props {
   isOpen: boolean;
@@ -26,12 +27,7 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
   const [hoovering, setIsHoovering] = useState(false);
   const router = useRouter();
 
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
+  const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const wordToDisplay = voiceInput.length > 1 ? transcript : "HOVER";
 
   const restartMicrophone = () => {
@@ -45,57 +41,24 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
   useEffect(() => {
     setVoiceInput(transcript);
     restartMicrophone();
-    if (transcript.toLowerCase() === "about") {
-      router.push("/about");
-    }
-    if (transcript.toLowerCase() === "home") {
-      router.push("/");
-    }
-    if (
-      transcript.toLowerCase() === "blogs" ||
-      transcript.toLowerCase() === "glocks" ||
-      transcript.toLowerCase() === "blog"
-    ) {
-      router.push("/travel-blog");
-    }
     if (
       transcript.toLowerCase() === "menu" ||
       transcript.toLowerCase() === "mini"
     ) {
       setIsOpen(true);
-    }
-    if (
-      transcript.toLowerCase() === "close" ||
-      transcript.toLowerCase() === "cloose"
-    ) {
+    } else if (transcript.toLowerCase() === "close") {
       setIsOpen(false);
-    }
-    if (transcript.toLowerCase() === "contact") {
+    } else if (transcript.toLowerCase() === "contact") {
       scrollToBottom();
+    } else {
+      voiceMenuData.map((data) => {
+        data.navWords.map((word) => {
+          if (word.toLowerCase() === transcript.toLowerCase()) {
+            router.push(data.url);
+          }
+        });
+      });
     }
-    //Blogs--Start
-    if (transcript.toLowerCase() === "india") {
-      router.push("/travel-blog/63hqC1VfvXGYFy0RQIL4W5");
-    }
-    if (transcript.toLowerCase() === "best") {
-      router.push("/travel-blog/3yOffYhZvDDSX0Ah8BvqMF");
-    }
-    if (transcript.toLowerCase() === "tiny") {
-      router.push("/travel-blog/7vak8cW1bd6H89ZqXsJEmN");
-    }
-    if (transcript.toLowerCase() === "waste") {
-      router.push("/travel-blog/2x4AcAJVo2E9WzIBzYley2");
-    }
-    if (transcript.toLowerCase() === "warm") {
-      router.push("/travel-blog/74xx5idIcjQ7dvsoCcrfo9");
-    }
-    if (transcript.toLowerCase() === "china") {
-      router.push("/travel-blog/2TMxLfIkwEQU7pJRBPY4p6");
-    }
-    if (transcript.toLowerCase() === "belt") {
-      router.push("/travel-blog/66cw7mgWvEu8yIKV4zM18q");
-    }
-    //Blogs--End
   }, [transcript]);
 
   const startListening = () => {
