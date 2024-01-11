@@ -42,7 +42,7 @@ export const DisplayCityInfo: FC = () => {
   useCloseOnClickOutsideElement(dropDownRef, setToogleDropDown);
 
   return (
-    <div className=' relative flex flex-col content-center justify-center md:max-w-screen-md mx-auto'>
+    <div className='  relative flex flex-col content-center justify-center md:max-w-screen-md mx-auto'>
       <PrimaryInput<string>
         value={userCityInput}
         setValue={setUserCityInput}

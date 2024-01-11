@@ -1,4 +1,3 @@
-import { PrimaryText, PrimaryTitle } from "@/ui";
 import Image from "next/image";
 import React from "react";
 
@@ -14,20 +13,15 @@ export const Card = () => {
           <div className='border w-3/4 rounded-md p-5 mt-5 -ml-5 bg-secondary '>
             <p>Get In Touch!</p>
             <a
-              className=' underline'
+              id='link'
+              className='underline'
               href='mailto:Nils.faelt@gmail.com?subject=Subject%20Here&body=Message%20Body%20Here'
             >
               Mail: Nils.faelt@gmail.com
             </a>
           </div>
         </div>
-        {/* <img
-          src='https://images.unsplash.com/photo-1534954553104-88cb75be7648?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-          alt=''
-          className=' h-72 w-full object-cover'
-          height={10}
-          width={10}
-        /> */}
+
         <Image
           alt='image of me'
           src={"/images/van.png"}

@@ -93,7 +93,10 @@ export const VoiceRecorder: FC<Props> = ({ isOpen, setIsOpen }) => {
     };
   }, []);
   return (
-    <div className='flex hidden sm:block flex-row gap-3 items-end z-20 items-center  '>
+    <div
+      data-testid='voice-recorder'
+      className='flex hidden sm:block flex-row gap-3 items-end z-20 items-center  '
+    >
       {hoovering && <DisplayInfoPopUp />}
 
       <div

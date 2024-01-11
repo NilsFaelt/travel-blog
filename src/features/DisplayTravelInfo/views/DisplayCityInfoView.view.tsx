@@ -1,11 +1,12 @@
 import { FC } from "react";
 import { DisplayCityInfo } from "..";
-import { PrimaryTitle } from "@/ui";
+import { MainSection, PrimaryTitle } from "@/ui";
 
 export const DisplayCityInfoView: FC = () => {
   return (
-    <div className='flex flex-col  relative justify-center content-center my-10'>
-      <p className=' text-center mb-2 font-bold'>Get Country Info:</p>
+    <div className=' bg-white w-full md:w-3/4  p-10 shadow-md rounded-md  flex flex-col  relative justify-center content-center my-10'>
+      <PrimaryTitle text='Get county info' />
+
       <DisplayCityInfo />
     </div>
   );

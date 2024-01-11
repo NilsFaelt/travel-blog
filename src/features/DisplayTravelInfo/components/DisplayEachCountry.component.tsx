@@ -8,7 +8,7 @@ export const DisplayEachCountry: React.FC<{
   if (!country) return null;
 
   return (
-    <div className=' border rounded-md shadow-md  max-w-xl mx-auto mt-8 p-10 self-center'>
+    <div className='bg-white border rounded-md shadow-md  max-w-xl mx-auto mt-8 p-10 self-center'>
       <h2 className='text-2xl font-bold mb-4'>{country.name}</h2>
       <div>
         <p>

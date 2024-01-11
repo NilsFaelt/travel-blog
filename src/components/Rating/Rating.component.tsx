@@ -11,7 +11,10 @@ export const Rating: FC<Props> = ({ rating = 0, difficultyRating = 0 }) => {
   const difficultyRatingArray = Array(difficultyRating).fill(null);
 
   return (
-    <div className='bg-white  flex flex-col gap-3 justify-center items-center text-black py-5'>
+    <div
+      data-testid='rating'
+      className='bg-white  flex flex-col gap-3 justify-center items-center text-black py-5'
+    >
       {rating > 0 && (
         <div className='flex flex-row gap-5 min-w-56'>
           <p>Rating: </p>
